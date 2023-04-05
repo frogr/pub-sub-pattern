@@ -11,7 +11,7 @@ class EventsController < ApplicationController
   end
 
   # GET /events/new
-  def new
+  def new()
     @event = Event.new
   end
 
@@ -20,13 +20,14 @@ class EventsController < ApplicationController
   end
 
   # POST /events or /events.json
-  def create
+  def create()
     @event = Event.new(event_params)
+    @publisher = Publisher.new
+    @publisher.subscribe([EventSayer.new(@event)])
 
     respond_to do |format|
       if @event.save
-        @event.public_send(@event.event_name.to_sym) if @event.respond_to?(@event.event_name)
-
+        @publisher.broadcast(@event.event_name)
         format.html { redirect_to root_path, notice: "Event was successfully created." }
       else
         format.html { render :new, status: :unprocessable_entity }
