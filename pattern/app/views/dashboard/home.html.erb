@@ -1,3 +1,7 @@
+<div class=<%="#{Box.last.color}"%>>
+This is a box
+</div>
+
 <%= form_for Event.new do |f| %>
   <%= f.text_field :event_name %>
   <%= f.submit "Send event" %>
