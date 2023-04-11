@@ -7,15 +7,15 @@ class EventSayer
     Event.new(event_name: "WE MADE A NEW EVENT FOR THAT").save
   end
 
-  def newbox_green
-    Box.new(color: "green").save
+  def new_red_alert
+    Alert.new(status: "red_alert").save
   end
 
-  def newbox_red
-    Box.new(color: "red").save
+  def new_yellow_alert
+    Alert.new(status: "yellow_alert").save
   end
 
-  def newbox_blue
-    Box.new(color: "blue").save
+  def all_clear
+    Alert.new(status: "all_clear").save
   end
 end

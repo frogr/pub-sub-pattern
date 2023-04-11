@@ -1,7 +1,3 @@
-<div class=<%="#{Box.last.color}"%>>
-This is a box
-</div>
-
 <%= form_for Event.new do |f| %>
   <%= f.text_field :event_name %>
   <%= f.submit "Send event" %>
@@ -11,4 +7,20 @@ This is a box
   <%= event.name %>
   <%= event.timestamp %>
   <br>
+<% end %>
+
+<h2>Alert Status</h2>
+
+<% if @alert.status == "all_clear" %>
+  <div class="all-clear">
+    All clear! 👍
+  </div>
+<% elsif @alert.status == "yellow_alert" %>
+  <div class="yellow">
+    Yellow alert! ⚠️
+  </div>
+<% else %>
+  <div class="red">
+    Red alert! 🚨
+  </div>
 <% end %>
